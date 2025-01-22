@@ -1,166 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Space Explorer</title>
-  <!-- Cartoonish Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
-  <style>
-    /* General Styles */
-    body {
-      margin: 0;
-      font-family: 'Chewy', sans-serif;
-      background-color: #000;
-      color: white;
-      overflow: hidden;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3em;
-      margin-top: 20px;
-      color: #f9d71c;
-      text-shadow: 2px 2px 4px #ff6f00;
-    }
-
-    p {
-      font-size: 1.5em;
-      margin-top: 10px;
-      color: #ffffff;
-    }
-
-    /* Background Stars */
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 60%);
-      animation: twinkle 2s infinite alternate;
-      pointer-events: none;
-    }
-
-    @keyframes twinkle {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
-
-    /* Sun */
-    .sun {
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, #ffcc33, #ff6600);
-      border-radius: 50%;
-      margin: 30px auto;
-      box-shadow: 0 0 30px 10px #ffcc33;
-      animation: pulse 2s infinite alternate;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
-    }
-
-    /* Planets Orbit */
-    .orbit {
-      position: relative;
-      margin: 0 auto;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      border: 2px dashed rgba(255, 255, 255, 0.3);
-      animation: rotate 30s linear infinite;
-    }
-
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Planets */
-    .planet {
-      width: 60px;
-      height: 60px;
-      position: absolute;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8em;
-      color: white;
-      text-shadow: 1px 1px 2px black;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      transform-origin: -200px center;
-    }
-
-    #mercury { background-color: #b3b3b3; left: 50%; top: 50%; transform: rotate(45deg) translate(-200px, -50%); }
-    #venus { background-color: #f5c242; left: 50%; top: 50%; transform: rotate(90deg) translate(-200px, -50%); }
-    #earth { background-color: #56ccf2; left: 50%; top: 50%; transform: rotate(135deg) translate(-200px, -50%); }
-    #mars { background-color: #ff4d4d; left: 50%; top: 50%; transform: rotate(180deg) translate(-200px, -50%); }
-    #jupiter { background-color: #ffad33; left: 50%; top: 50%; transform: rotate(225deg) translate(-200px, -50%); }
-    #saturn { background-color: #f1c232; left: 50%; top: 50%; transform: rotate(270deg) translate(-200px, -50%); }
-    #uranus { background-color: #66b3b3; left: 50%; top: 50%; transform: rotate(315deg) translate(-200px, -50%); }
-    #neptune { background-color: #4d79ff; left: 50%; top: 50%; transform: rotate(360deg) translate(-200px, -50%); }
-
-    /* Fun Fact Popup */
-    .fun-fact {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #f9d71c;
-      border-radius: 20px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-      z-index: 1000;
-    }
-
-    .close-btn {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #f9d71c;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.2em;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h1>Space Explorer</h1>
-  <div class="sun"></div>
-  <div class="orbit">
-    <div class="planet" id="mercury" onclick="showFact('Mercury', 'Mercury is the smallest planet in the solar system!')"></div>
-    <div class="planet" id="venus" onclick="showFact('Venus', 'Venus is hotter than Mercury because of its thick atmosphere!')"></div>
-    <div class="planet" id="earth" onclick="showFact('Earth', 'Earth is the only planet known to support life!')"></div>
-    <div class="planet" id="mars" onclick="showFact('Mars', 'Mars is known as the Red Planet because of its rusty soil!')"></div>
-    <div class="planet" id="jupiter" onclick="showFact('Jupiter', 'Jupiter is the largest planet in the solar system!')"></div>
-    <div class="planet" id="saturn" onclick="showFact('Saturn', 'Saturn has the most beautiful rings in the solar system!')"></div>
-    <div class="planet" id="uranus" onclick="showFact('Uranus', 'Uranus rotates on its side, unlike other planets!')"></div>
-    <div class="planet" id="neptune" onclick="showFact('Neptune', 'Neptune is the windiest planet in the solar system!')"></div>
+    <div class="planet" id="earth" title="Earth: Our home planet"></div>
+    <div class="planet" id="mars" title="Mars: The red planet"></div>
+    <div class="planet" id="jupiter" title="Jupiter: The largest planet"></div>
+    <div class="planet" id="saturn" title="Saturn: Known for its rings"></div>
+    <div class="planet" id="uranus" title="Uranus: Rotates on its side"></div>
+    <div class="planet" id="neptune" title="Neptune: Farthest from the sun"></div>
   </div>
 
-  <div class="fun-fact" id="factBox">
-    <h2 id="planetName"></h2>
-    <p id="planetFact"></p>
-    <button class="close-btn" onclick="closeFact()">Close</button>
-  </div>
+  <p>Click on a planet to learn a fun fact!</p>
 
   <script>
-    function showFact(name, fact) {
-      document.getElementById('planetName').textContent = name;
-      document.getElementById('planetFact').textContent = fact;
-      document.getElementById('factBox').style.display = 'block';
-    }
-
-    function closeFact() {
-      document.getElementById('factBox').style.display = 'none';
-    }
+    // Event listener for planets
+    document.querySelectorAll('.planet').forEach(planet => {
+      planet.addEventListener('click', () => {
+        alert(planet.getAttribute('title'));
+      });
+    });
   </script>
 </body>
 </html>
